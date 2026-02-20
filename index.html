@@ -3,109 +3,177 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>LosHackers de CDIA - Landing</title>
-        <link rel="stylesheet" href="assets/styles.css" />
+        <title>LosHackers de CDIA – Seguridad Inteligente</title>
+        <link rel="stylesheet" href="assets/styless.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
-        <nav>
+        <nav class="navbar">
             <div class="logo">LosHackers de CDIA</div>
-            <ul>
-                <li><a href="index.html" class="active">Landing</a></li>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Inicio</a></li>
                 <li><a href="practica1.html">Práctica 1</a></li>
-                <li><a href="#">Práctica 2</a></li>
+                <li><a href="practica2.html">Práctica 2</a></li>
             </ul>
         </nav>
 
-        <header class="hero">
-            <div class="hero-content">
-                <h1>
-                    Somos <span class="highlight">LosHackers de CDIA</span>,
-                    pero con código limpio y conciencia 😂
-                </h1>
-                <p>
-                    Nacimos para demostrar que la seguridad no va de "ser
-                    malos", sino de pensar como un atacante para proteger mejor.
-                    Nuestro lema: practicar, documentar, compartir y aprender
-                    sin humo.
-                </p>
-                <div class="tags">
-                    <span>#Ciberseguridad</span> <span>#Concienciacion</span>
-                    <span>#Hardening</span>
-                </div>
-                <div class="buttons">
-                    <button class="btn-primary">Ver miembros</button>
-                    <button class="btn-secondary">Motivación</button>
-                </div>
-                <div class="members">
-                    <p>
-                        <strong>Integrantes:</strong> Juan Pérez, Ana García,
-                        Luis Martínez
+        <main>
+            <!-- Hero principal – muy limpio y centrado -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Pensamos como atacantes<br />para proteger mejor</h1>
+                    <p class="hero-subtitle">
+                        Seguridad práctica y ética en un mundo donde la IA
+                        redefine tanto el riesgo como la defensa.
                     </p>
-                </div>
-            </div>
-            <div class="philosophy-card">
-                <h3>Checklist de la filosofía del grupo</h3>
-                <ul>
-                    <li>
-                        <span class="dot purple"></span>
-                        <strong>El eslabón débil existe:</strong> El software
-                        también depende de procesos y personas.
-                    </li>
-                    <li>
-                        <span class="dot green"></span>
-                        <strong>Seguridad por capas:</strong> Monitoring +
-                        Hardening + Gestión de identidades.
-                    </li>
-                    <li>
-                        <span class="dot orange"></span>
-                        <strong>Curiosidad con límites:</strong> Laboratorio
-                        controlado, ética primero.
-                    </li>
-                </ul>
-            </div>
-        </header>
 
-        <main class="grid-container">
-            <section class="card">
-                <h2>Motivo (inventado) de creación</h2>
-                <p>
-                    En el TEMA 1 vimos una realidad: la mayoría de incidentes no
-                    empiezan con hackers de película, sino con fallos humanos y
-                    falta de hábitos. Creamos este grupo para reducir el riesgo
-                    con hábitos simples.
-                </p>
-                <ul>
-                    <li>
-                        ✅ Convertir sustos en aprendizaje: documentar fallos.
-                    </li>
-                    <li>✅ Practicar ataques comunes en entornos seguros.</li>
-                    <li>
-                        ✅ Mejorar la cultura: la seguridad es cosa del equipo.
-                    </li>
-                </ul>
+                    <div class="hero-cta">
+                        <a href="#focus" class="btn-primary"
+                            >Explorar enfoque</a
+                        >
+                        <a href="#team" class="btn-secondary"
+                            >Conocer al equipo</a
+                        >
+                    </div>
+                </div>
             </section>
 
-            <section class="card">
-                <h2>Área de conocimiento</h2>
-                <p>
-                    Tocamos un poco de todo, con foco práctico en seguridad web
-                    y hardening de sistemas.
-                </p>
-                <div class="knowledge-item">
-                    <strong>WEB:</strong> XSS, CSRF, sesiones, validación y
-                    sanitización.
+            <!-- Principios – tarjetas con elevación sutil -->
+            <section class="principles" id="principles">
+                <div class="section-header">
+                    <h2>Nuestros principios fundamentales</h2>
                 </div>
-                <div class="knowledge-item">
-                    <strong>SYS:</strong> SSH por claves, bloqueo de root, logs,
-                    firewalls.
+                <div class="grid cards-4">
+                    <div class="card">
+                        <div class="dot primary"></div>
+                        <h3>Zero Trust por diseño</h3>
+                        <p>
+                            Identidad como nuevo perímetro. Verificación
+                            continua. Nunca confíes, siempre verifica.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="dot accent"></div>
+                        <h3>Defensa en profundidad</h3>
+                        <p>
+                            Hardening sistemático + visibilidad + respuesta
+                            automatizada.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="dot indigo"></div>
+                        <h3>Ética inquebrantable</h3>
+                        <p>
+                            Laboratorios controlados. Documentación total. Nunca
+                            en entornos reales sin autorización.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="dot teal"></div>
+                        <h3>Humano en el centro</h3>
+                        <p>
+                            Entrenamiento realista contra phishing IA y
+                            deepfakes. Cultura de seguridad diaria.
+                        </p>
+                    </div>
                 </div>
-                <div class="knowledge-item">
-                    <strong>HUMAN:</strong> Phishing, ingeniería social y
-                    hábitos seguros.
-                </div>
+                <br />
+                <br />
             </section>
+
+            <!-- Por qué 2026 – stats / bloques cortos -->
+            <section class="why">
+                <div class="section-header">
+                    <h2>El panorama en 2026</h2>
+                </div>
+                <div class="grid cards-4">
+                    <div class="stat-card">
+                        <div class="stat-number">80–90%</div>
+                        <p>
+                            de brechas involucran error humano o credenciales
+                            comprometidas
+                        </p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Phishing IA</div>
+                        <p>
+                            mensajes hiperpersonalizados + voz clonada + timing
+                            perfecto
+                        </p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Ransomware 2.0</div>
+                        <p>grupos fragmentados, más veloces y especializados</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Nube & híbrido</div>
+                        <p>configuraciones erróneas = puerta abierta #1</p>
+                    </div>
+                </div>
+                <br />
+                <br />
+            </section>
+
+            <!-- Enfoque actual – grid limpio -->
+            <section class="focus" id="focus">
+                <div class="section-header">
+                    <h2>En qué nos enfocamos</h2>
+                </div>
+                <div class="grid cards-2">
+                    <div class="focus-card">
+                        <h3>Aplicaciones & Web</h3>
+                        <ul>
+                            <li>Prompt injection en LLMs</li>
+                            <li>API security & supply-chain</li>
+                            <li>Broken access control moderno</li>
+                        </ul>
+                    </div>
+                    <div class="focus-card">
+                        <h3>Infraestructura & Sistemas</h3>
+                        <ul>
+                            <li>Immutable + least privilege</li>
+                            <li>Logs centralizados & SIEM ligero</li>
+                            <li>Cloud-native hardening</li>
+                        </ul>
+                    </div>
+                    <div class="focus-card">
+                        <h3>Identidad 2026</h3>
+                        <ul>
+                            <li>MFA resistente a phishing</li>
+                            <li>Behavioral analytics</li>
+                            <li>Monitoreo de exposición externa</li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+                <br />
+            </section>
+
+            <!-- Equipo – minimal -->
+            <section class="team" id="team">
+                <div class="section-header">
+                    <h2>Nuestro equipo</h2>
+                </div>
+                <p class="team-text">Aitor Goitia · Ismael Bonachía</p>
+            </section>
+
+            <!-- Footer CTA -->
+            <footer class="footer">
+                <p>
+                    Practicamos, documentamos y compartimos — sin humo, con
+                    responsabilidad.
+                </p>
+                <div class="footer-cta">
+                    <a href="practica1.html" class="btn-primary"
+                        >Ver Práctica 1</a
+                    >
+                </div>
+            </footer>
         </main>
-
-        <script src="script.js"></script>
     </body>
 </html>

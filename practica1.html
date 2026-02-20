@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Práctica 1 – LosHackers de CDIA</title>
+        <link rel="stylesheet" href="assets/styless.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* Ajustes específicos para mejorar la lectura de la práctica */
+            .step-number {
+                display: inline-block;
+                background: var(--accent);
+                color: white;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 32px;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            .status-badge {
+                padding: 4px 12px;
+                border-radius: 999px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+            .success {
+                background: #e8f5e9;
+                color: var(--primary-dark);
+                border: 1px solid var(--primary);
+            }
+            .error {
+                background: #ffebee;
+                color: #c62828;
+                border: 1px solid #c62828;
+            }
+
+            .extra-box {
+                border-left: 5px solid var(--accent);
+                background: var(--surface);
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+            .valuation {
+                background: var(--primary);
+                color: white;
+                padding: 3rem 10%;
+                border-radius: var(--radius);
+                margin-top: 4rem;
+            }
+            .valuation h2 {
+                color: white;
+                margin-bottom: 1rem;
+            }
+            .valuation p {
+                font-style: italic;
+                opacity: 0.9;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logo">LosHackers de CDIA</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="practica1.html" class="active">Práctica 1</a></li>
+                <li><a href="practica2.html">Práctica 2</a></li>
+            </ul>
+        </nav>
+
+        <main style="padding: 4rem 5%; max-width: 1000px; margin: 0 auto">
+            <header class="section-header">
+                <p
+                    style="
+                        color: var(--accent);
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                    "
+                >
+                    LABORATORIO 01
+                </p>
+                <h1>Instalación y Acceso Forense</h1>
+                <p class="hero-subtitle">
+                    Análisis de vulnerabilidades físicas y sistemas de archivos
+                    mediante Live USB.
+                </p>
+                <p><strong>Autores:</strong> Aitor Goitia e Ismael Bonachía</p>
+            </header>
+
+            <section class="grid cards-2">
+                <div class="focus-card">
+                    <h3>
+                        <span class="step-number">1</span>Preparación del
+                        Entorno
+                    </h3>
+                    <p>
+                        Tras descartar Kali Linux por problemas de arranque,
+                        optamos por <strong>Ubuntu</strong> como sistema base.
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Windows:</strong> Creación mediante Rufus.
+                        </li>
+                        <li>
+                            <strong>Linux:</strong> Creación mediante comando
+                            terminal <code>dd</code>.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="focus-card">
+                    <h3>
+                        <span class="step-number">2</span>Caso 1: Gigabyte (Arch
+                        Linux)
+                        <span class="status-badge success">Vulnerable</span>
+                    </h3>
+                    <p>
+                        Acceso total tras modificar BIOS y desactivar Secure
+                        Boot.
+                    </p>
+                    <ul>
+                        <li>Sin cifrado de disco detectado.</li>
+                        <li>Partición montada automáticamente.</li>
+                        <li>
+                            Permisos de escritura totales (coincidencia de User
+                            ID).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="focus-card">
+                    <h3>
+                        <span class="step-number">3</span>Caso 2: HP Laptop
+                        <span class="status-badge error">Protegido</span>
+                    </h3>
+                    <p>
+                        El sistema presentó resistencia al montaje de datos
+                        debido a la configuración de hardware.
+                    </p>
+                    <ul>
+                        <li>
+                            Controladora en modo
+                            <strong>RAID Intel RST</strong>.
+                        </li>
+                        <li>Error: <code>isw_raid_member</code>.</li>
+                        <li>Acceso denegado a la información.</li>
+                    </ul>
+                </div>
+
+                <div class="extra-box">
+                    <h3 style="color: var(--accent)">🔍 Hallazgo Crítico</h3>
+                    <p>
+                        En el sistema accesible, localizamos el archivo
+                        <code>/etc/shadow</code>. Al contener los hashes de las
+                        claves, confirmamos la posibilidad de modificar
+                        contraseñas del sistema original desde el entorno Live.
+                    </p>
+                </div>
+            </section>
+
+            <section class="valuation">
+                <h2>Valoración y Ética</h2>
+                <p>
+                    "Esta práctica demuestra que podemos recuperar un SO del
+                    cual hemos perdido la contraseña o acceder de manera ilícita
+                    a otros equipos. Es vital recordar que
+                    <strong>no debemos hacerlo sin permiso</strong>."
+                </p>
+                <div
+                    style="
+                        margin-top: 2rem;
+                        border-top: 1px solid rgba(255, 255, 255, 0.2);
+                        padding-top: 1rem;
+                    "
+                >
+                    <strong>Recomendaciones de Seguridad:</strong>
+                    <ul style="margin-top: 1rem">
+                        <li>
+                            • Encriptación de disco completo (LUKS/BitLocker).
+                        </li>
+                        <li>• Contraseña robusta en la BIOS/UEFI.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <div class="footer-cta">
+                    <a href="index.html" class="btn-secondary"
+                        >Volver al Inicio</a
+                    >
+                    <a href="practica2.html" class="btn-primary"
+                        >Siguiente Práctica</a
+                    >
+                </div>
+            </footer>
+        </main>
+    </body>
+</html>
