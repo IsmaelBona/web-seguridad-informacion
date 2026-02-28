@@ -25,11 +25,7 @@
 
         <main class="practice-content">
             <header class="section-header">
-                <h1>Práctica 2: Análisis de Riesgos y Mitigación</h1>
-                <p>
-                    Estudio detallado sobre malware, ingeniería social y
-                    seguridad física.
-                </p>
+                <h1>Práctica 2: Keylogger</h1>
             </header>
             <section class="intro-visual">
                 <p class="answer-text">
@@ -59,7 +55,25 @@
                     />
                 </div>
             </div>
+            <section class="intro-visual">
+                <article class="answer-card">
+                    <h3 class="system-title">Adaptación para Linux </h3>
+                    <p class="answer-text">
+                        Debido a las políticas de aislamiento de <strong>Wayland</strong>,
+                        que impiden que una aplicación monitorice a otra, se sustituyó
+                        la librería <code>pynput</code> por <code>evdev</code>.
+                        Esta última permite el acceso directo a los eventos del kernel
+                        mediante la lectura de dispositivos en <code>/dev/input/</code>.
+                    </p>
 
+                    <p class="answer-text">
+                        En cuanto a la creacion del ejecutable, <strong>PyInstaller</strong>
+                        funciono correctamente tanto en Linux como Windows. Por lo que no hubo problemas
+                        para probar el ejecutable
+                    </p>
+                </article>
+            </section>            </section>
+            <br />
             <section class="question-block">
                 <h3>a. Señales de ejecutables sospechosos</h3>
                 <div class="answer-text">
