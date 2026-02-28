@@ -1,0 +1,60 @@
+/* Estilos específicos para la visualización de la práctica */
+.practice-content {
+    padding: 4rem 10%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.image-placeholder-container {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para más espacio */
+    align-items: center;
+    gap: 30px;
+    margin: 40px 0;
+}
+.image-placeholder {
+    width: 100%; /* Ocupa el ancho del contenedor principal */
+    max-width: 900px; /* Tamaño máximo mayor */
+    height: auto;
+    min-height: 300px;
+    border: 2px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+.image-placeholder img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+.image-caption {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+}
+.question-block {
+    margin-bottom: 2.5rem;
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+}
+.question-block h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+.answer-text {
+    color: var(--text-light);
+    line-height: 1.7;
+}
+.highlight-box {
+    background: var(--surface);
+    padding: 1.5rem;
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    margin-top: 1rem;
+}
