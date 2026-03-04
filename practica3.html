@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Practica 3 - Vulnerabilidad XSS</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .contenedor { margin-bottom: 30px; padding: 15px; border: 1px solid #ccc; }
+        .solucion { background-color: #e9ecef; padding: 15px; border-left: 5px solid #28a745; }
+    </style>
+</head>
+<body>
+    <h1>Práctica 3: Vectores de ataque XSS (DOM)</h1>
+
+    <div class="contenedor">
+        <h2>Formulario 1: Buscador de registros</h2>
+        <input type="text" id="campoBusqueda" placeholder="Introduce el término">
+        <button onclick="procesarBusqueda()">Buscar</button>
+        <p>Resultados para: <span id="resultadoBusqueda"></span></p>
+    </div>
+
+    <div class="contenedor">
+        <h2>Formulario 2: Actualización de estado</h2>
+        <input type="text" id="campoEstado" placeholder="¿Qué estás pensando?">
+        <button onclick="publicarEstado()">Publicar</button>
+        <div id="muroEstado"></div>
+    </div>
+
+    <script>
+        function procesarBusqueda() {
+            var entrada = document.getElementById("campoBusqueda").value;
+            document.getElementById("resultadoBusqueda").innerHTML = entrada;
+        }
+
+        function publicarEstado() {
+            var estado = document.getElementById("campoEstado").value;
+            var estructuraHtml = "<b>Estado actual:</b> " + estado;
+        
+            var contenedor = document.getElementById("muroEstado");
+            contenedor.innerHTML = estructuraHtml;
+        
+            var scriptsInyectados = contenedor.getElementsByTagName("script");
+            for (var i = 0; i < scriptsInyectados.length; i++) {
+                eval(scriptsInyectados[i].innerText);
+            }
+        }
+    </script>
+
+    <hr>
+
+    <div class="solucion">
+        <h2>Solución: Cómo arreglarlo</h2>
+        <p>La vulnerabilidad en ambos formularios radica en el uso de la propiedad <code>innerHTML</code>. Esta propiedad toma la cadena de texto introducida por el usuario y fuerza al analizador del navegador a interpretarla como marcado HTML ejecutable.</p>
+        <p>Para mitigar este fallo y asegurar la aplicación, es imperativo utilizar propiedades que traten la entrada estrictamente como texto plano, neutralizando cualquier etiqueta o script malicioso.</p>
+        
+        <h3>Implementación de código seguro</h3>
+        <pre>
+function procesarBusquedaSegura() {
+    var entrada = document.getElementById("campoBusqueda").value;
+    document.getElementById("resultadoBusqueda").textContent = entrada;
+}
+
+function publicarEstadoSeguro() {
+    var estado = document.getElementById("campoEstado").value;
+    var elementoMuro = document.getElementById("muroEstado");
+    elementoMuro.textContent = "Estado actual: " + estado;
+}
+        </pre>
+    </div>
+</body>
+</html>
