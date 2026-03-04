@@ -1,0 +1,52 @@
+/* Ajustes específicos para mejorar la lectura de la práctica */
+.step-number {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.success {
+    background: #e8f5e9;
+    color: var(--primary-dark);
+    border: 1px solid var(--primary);
+}
+.error {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #c62828;
+}
+
+.extra-box {
+    border-left: 5px solid var(--accent);
+    background: var(--surface);
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+.valuation {
+    background: var(--primary);
+    color: white;
+    padding: 3rem 10%;
+    border-radius: var(--radius);
+    margin-top: 4rem;
+}
+.valuation h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+.valuation p {
+    font-style: italic;
+    opacity: 0.9;
+}

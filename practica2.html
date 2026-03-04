@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Práctica 2 – LosHackers de CDIA</title>
+        <link rel="stylesheet" href="assets/styles.css" />
+        <link rel="stylesheet" href="assets/styles_practica2.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logo">LosHackers de CDIA</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="practica1.html">Práctica 1</a></li>
+                <li><a href="practica2.html" class="active">Práctica 2</a></li>
+            </ul>
+        </nav>
+
+        <main class="practice-content">
+            <header class="section-header">
+                <h1>Práctica 2: Keylogger</h1>
+            </header>
+            <section class="intro-visual">
+                <p class="answer-text">
+                    En las siguientes capturas se observa el funcionamiento de
+                    un ataque combinado: mientras el
+                    <strong>ejecutable falso</strong> inicia la aplicación
+                    legítima de <strong>Steam</strong> para no levantar
+                    sospechas, un <strong>keylogger</strong>
+                    en segundo plano captura silenciosamente todas las
+                    pulsaciones de teclado.
+                </p>
+            </section>
+            <div class="image-placeholder-container">
+                <div class="image-placeholder">
+                    <img
+                        src="public/exec_app.png"
+                        alt="Captura de práctica 2.1"
+                        onerror="this.style.display = 'none'"
+                    />
+                </div>
+
+                <div class="image-placeholder">
+                    <img
+                        src="public/keys_logs.png"
+                        alt="Captura de práctica 2.2"
+                        onerror="this.style.display = 'none'"
+                    />
+                </div>
+            </div>
+            <section class="intro-visual">
+                <article class="answer-card">
+                    <h3 class="system-title">Adaptación para Linux </h3>
+                    <p class="answer-text">
+                        Debido a las políticas de aislamiento de <strong>Wayland</strong>,
+                        que impiden que una aplicación monitorice a otra, se sustituyó
+                        la librería <code>pynput</code> por <code>evdev</code>.
+                        Esta última permite el acceso directo a los eventos del kernel
+                        mediante la lectura de dispositivos en <code>/dev/input/</code>.
+                    </p>
+
+                    <p class="answer-text">
+                        En cuanto a la creacion del ejecutable, <strong>PyInstaller</strong>
+                        funciono correctamente tanto en Linux como Windows. Por lo que no hubo problemas
+                        para probar el ejecutable
+                    </p>
+                </article>
+            </section>            </section>
+            <br />
+            <section class="question-block">
+                <h3>a. Señales de ejecutables sospechosos</h3>
+                <div class="answer-text">
+                    <ul>
+                        <li>
+                            <strong>Comportamiento anómalo de la red:</strong>
+                            Intentos de establecer conexiones externas
+                            inesperadas a servidores desconocidos o puertos
+                            inusuales.
+                        </li>
+                        <li>
+                            <strong>Consumo de recursos inusual:</strong>
+                            Incremento inexplicable en el uso de CPU, disco o
+                            memoria, especialmente en aplicaciones que deberían
+                            ser ligeras.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="question-block">
+                <h3>b. Medidas técnicas de prevención</h3>
+                <div class="answer-text">
+                    <ul>
+                        <li>
+                            <strong
+                                >Control de Aplicaciones (Whitelisting):</strong
+                            >
+                            Implementación de políticas como AppLocker para
+                            impedir la ejecución de binarios no firmados.
+                        </li>
+                        <li>
+                            <strong>Principio de Menor Privilegio:</strong>
+                            Limitar permisos de administrador para evitar que el
+                            software instale persistencia en el sistema.
+                        </li>
+                        <li>
+                            <strong>Segmentación de red:</strong> Limitar la
+                            comunicación con el exterior para evitar la
+                            exfiltración de datos capturados.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="question-block">
+                <h3>c. El papel de la ingeniería social</h3>
+                <p class="answer-text">
+                    Es el "puente" que hace efectivo al malware utilizando:
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        <strong>Pretexto:</strong> Disfrazar archivos como
+                        informes legítimos para ganar confianza.
+                    </p>
+                    <p>
+                        <strong>Urgencia:</strong> Incitar a actuar sin pensar
+                        ante problemas inexistentes.
+                    </p>
+                    <p>
+                        <strong>Enmascaramiento:</strong> Uso de iconos y
+                        nombres comunes para reducir la fricción cognitiva.
+                    </p>
+                </div>
+            </section>
+
+            <section class="question-block">
+                <h3>d. Riesgo del acceso físico</h3>
+                <div class="answer-text">
+                    <p>
+                        El acceso físico invalida gran parte de las defensas
+                        lógicas al permitir:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Puenteo de protecciones:</strong> Inicio
+                            desde unidades externas (Live USB) ignorando
+                            políticas de grupo.
+                        </li>
+                        <li>
+                            <strong>Extracción de claves:</strong> Uso de
+                            hardware como Keyloggers físicos o Rubber Ducky,
+                            invisibles para el SO.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <div class="footer-cta">
+                    <a href="practica1.html" class="btn-secondary"
+                        >Volver a Práctica 1</a
+                    >
+                    <a href="index.html" class="btn-primary"
+                        >Volver al Inicio</a
+                    >
+                </div>
+            </footer>
+        </main>
+    </body>
+</html>
