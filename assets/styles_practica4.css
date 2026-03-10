@@ -1,0 +1,43 @@
+.code-container {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-family: "Courier New", Courier, monospace;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-left: 5px solid var(--accent);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.result-badge {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 1rem;
+    font-family: monospace;
+    font-size: 1.2rem;
+}
+.step-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+}
+.keyword {
+    color: #569cd6;
+}
+.string {
+    color: #ce9178;
+}
+.comment {
+    color: #6a9955;
+}
+.func {
+    color: #dcdcaa;
+}
