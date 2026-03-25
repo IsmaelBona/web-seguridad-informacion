@@ -8,7 +8,10 @@
         <link rel="stylesheet" href="assets/styles_practica3.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <nav class="navbar">
@@ -20,23 +23,49 @@
                 <li><a href="practica3.html" class="active">Práctica 3</a></li>
                 <li><a href="practica4.html">Práctica 4</a></li>
                 <li><a href="practica5.html">Práctica 5</a></li>
+                <li><a href="practica6.html">Práctica 6</a></li>
             </ul>
         </nav>
 
         <main style="padding: 4rem 5%; max-width: 1000px; margin: 0 auto">
             <header class="section-header">
-                <p style="color: var(--accent, #3b82f6); font-weight: 600; margin-bottom: 0.5rem;">Seguridad en Aplicaciones Web</p>
+                <p
+                    style="
+                        color: var(--accent, #3b82f6);
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                    "
+                >
+                    Seguridad en Aplicaciones Web
+                </p>
                 <h1>Práctica 3: Vectores de ataque XSS (DOM)</h1>
-                <p style="color: #9ca3af; margin-top: 1rem;">Demostración de vulnerabilidades de Cross-Site Scripting basadas en el Document Object Model y su posterior mitigación.</p>
+                <p style="color: #9ca3af; margin-top: 1rem">
+                    Demostración de vulnerabilidades de Cross-Site Scripting
+                    basadas en el Document Object Model y su posterior
+                    mitigación.
+                </p>
             </header>
 
             <section class="step-card">
                 <h2>Formulario 1: Buscador de registros</h2>
                 <div class="form-container">
-                    <input type="text" id="campoBusqueda" class="input-field" placeholder="Introduce el término de búsqueda (<script>alert('XSS')</script>)">
-                    <button class="btn-primary" onclick="procesarBusqueda()">Buscar</button>
+                    <input
+                        type="text"
+                        id="campoBusqueda"
+                        class="input-field"
+                        placeholder="Introduce el término de búsqueda (<script>alert('XSS')</script>)"
+                    />
+                    <button class="btn-primary" onclick="procesarBusqueda()">
+                        Buscar
+                    </button>
                     <div class="result-box">
-                        <p>Resultados para: <span id="resultadoBusqueda" class="highlight-text"></span></p>
+                        <p>
+                            Resultados para:
+                            <span
+                                id="resultadoBusqueda"
+                                class="highlight-text"
+                            ></span>
+                        </p>
                     </div>
                 </div>
             </section>
@@ -44,26 +73,36 @@
             <section class="step-card">
                 <h2>Formulario 2: Actualización de estado</h2>
                 <div class="form-container">
-                    <input type="text" id="campoEstado" class="input-field" placeholder="¿Qué estás pensando? (<img src='x' onerror='alert(1)'>)">
-                    <button class="btn-primary" onclick="publicarEstado()">Publicar</button>
+                    <input
+                        type="text"
+                        id="campoEstado"
+                        class="input-field"
+                        placeholder="¿Qué estás pensando? (<img src='x' onerror='alert(1)'>)"
+                    />
+                    <button class="btn-primary" onclick="publicarEstado()">
+                        Publicar
+                    </button>
                     <div id="muroEstado" class="muro-box"></div>
                 </div>
             </section>
 
             <script>
                 function procesarBusqueda() {
-                    var entrada = document.getElementById("campoBusqueda").value;
-                    document.getElementById("resultadoBusqueda").innerHTML = entrada;
+                    var entrada =
+                        document.getElementById("campoBusqueda").value;
+                    document.getElementById("resultadoBusqueda").innerHTML =
+                        entrada;
                 }
 
                 function publicarEstado() {
                     var estado = document.getElementById("campoEstado").value;
                     var estructuraHtml = "<b>Estado actual:</b> " + estado;
-                
+
                     var contenedor = document.getElementById("muroEstado");
                     contenedor.innerHTML = estructuraHtml;
-                
-                    var scriptsInyectados = contenedor.getElementsByTagName("script");
+
+                    var scriptsInyectados =
+                        contenedor.getElementsByTagName("script");
                     for (var i = 0; i < scriptsInyectados.length; i++) {
                         eval(scriptsInyectados[i].innerText);
                     }
@@ -72,10 +111,22 @@
 
             <section class="step-card solucion">
                 <h2>Solución: Cómo arreglarlo</h2>
-                <p>La vulnerabilidad en ambos formularios radica en el uso de la propiedad <code>innerHTML</code>. Esta propiedad toma la cadena de texto introducida por el usuario y fuerza al analizador del navegador a interpretarla como marcado HTML ejecutable.</p>
-                <p>Para mitigar este fallo en integraciones web complejas, es imperativo utilizar propiedades que traten la entrada estrictamente como texto plano.</p>
-                
-                <h3 style="margin-top: 1.5rem;">Implementación de código seguro</h3>
+                <p>
+                    La vulnerabilidad en ambos formularios radica en el uso de
+                    la propiedad <code>innerHTML</code>. Esta propiedad toma la
+                    cadena de texto introducida por el usuario y fuerza al
+                    analizador del navegador a interpretarla como marcado HTML
+                    ejecutable.
+                </p>
+                <p>
+                    Para mitigar este fallo en integraciones web complejas, es
+                    imperativo utilizar propiedades que traten la entrada
+                    estrictamente como texto plano.
+                </p>
+
+                <h3 style="margin-top: 1.5rem">
+                    Implementación de código seguro
+                </h3>
                 <div class="code-container">
                     <pre>
 <span class="keyword">function</span> <span class="func">procesarBusquedaSegura</span>() {
@@ -93,8 +144,12 @@
 
             <footer class="footer">
                 <div class="footer-cta">
-                    <a href="practica2.html" class="btn-secondary">Anterior: Práctica 2</a>
-                    <a href="practica4.html" class="btn-primary">Siguiente: Práctica 4</a>
+                    <a href="practica2.html" class="btn-secondary"
+                        >Anterior: Práctica 2</a
+                    >
+                    <a href="practica4.html" class="btn-primary"
+                        >Siguiente: Práctica 4</a
+                    >
                 </div>
             </footer>
         </main>

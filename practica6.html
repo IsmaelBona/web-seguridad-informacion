@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Estrategia de Backup – LosHackers de CDIA</title>
+        <link rel="stylesheet" href="assets/styles.css" />
+        <link rel="stylesheet" href="assets/styles_practica1.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logo">LosHackers de CDIA</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="practica1.html">Práctica 1</a></li>
+                <li><a href="practica2.html">Práctica 2</a></li>
+                <li><a href="practica3.html">Práctica 3</a></li>
+                <li><a href="practica4.html">Práctica 4</a></li>
+                <li><a href="practica5.html">Práctica 5</a></li>
+                <li><a href="practica6.html" class="active">Práctica 6</a></li>
+            </ul>
+        </nav>
+
+        <main style="padding: 4rem 5%; max-width: 900px; margin: 0 auto">
+            <header class="section-header">
+                <p
+                    style="
+                        color: var(--accent);
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                    "
+                >
+                    DISEÑO TEÓRICO
+                </p>
+                <h1>Estrategia de Backup y Precios</h1>
+                <p class="hero-subtitle">
+                    Plan de continuidad de negocio basado en la regla 3-2-1 para
+                    entornos de desarrollo y hosting.
+                </p>
+            </header>
+
+            <section class="question-block" style="margin-bottom: 3rem">
+                <div class="question-header">
+                    <span class="status-badge success">Escenario A</span>
+                    <h2>Empresa de 30 Trabajadores</h2>
+                </div>
+                <p class="answer-text">
+                    Para una organización de este tamaño, la prioridad es el
+                    <strong>RTO (Tiempo de Recuperación)</strong> y la
+                    <strong>Inmutabilidad</strong> de los datos frente a ataques
+                    de Ransomware.
+                </p>
+
+                <div class="focus-card" style="margin-top: 1.5rem">
+                    <h3>Sistemas de Backup Seleccionados</h3>
+                    <div
+                        style="
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 2rem;
+                            margin-top: 1rem;
+                        "
+                    >
+                        <div>
+                            <h4 style="color: var(--primary)">
+                                Infraestructura Local
+                            </h4>
+                            <ul>
+                                <li>
+                                    <strong>NAS Profesional:</strong>
+                                    Synology/QNAP de 8 bahías (RAID 6).
+                                </li>
+                                <li>
+                                    <strong>Capacidad:</strong> 112TB brutos
+                                    (aprox. 80TB efectivos).
+                                </li>
+                                <li>
+                                    <strong>Uso:</strong> Copias rápidas diarias
+                                    de servidores y estaciones.
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary)">
+                                Capa Cloud (Off-site)
+                            </h4>
+                            <ul>
+                                <li>
+                                    <strong>Almacenamiento:</strong>
+                                    AWS S3.
+                                </li>
+                                <li><strong>Software:</strong> Veeam Backup</li>
+                                <li>
+                                    <strong>Seguridad:</strong> Copia inmutable
+                                    fuera de la oficina.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div
+                        class="highlight-box"
+                        style="margin-top: 1.5rem; text-align: center"
+                    >
+                        <p>
+                            <strong>Precio Medio Estimado:</strong> ~2.500€
+                            (Inversión inicial hardware) + 150€/mes (Servicios
+                            Cloud).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="question-block" style="margin-bottom: 3rem">
+                <div class="question-header">
+                    <span class="status-badge success">Escenario B</span>
+                    <h2>Desarrollador Autónomo (1 trabajador)</h2>
+                </div>
+                <p class="answer-text">
+                    La estrategia se centra en la
+                    <strong>automatización total</strong> y la sencillez de
+                    gestión, asegurando que el profesional no tenga que
+                    intervenir manualmente en el proceso.
+                </p>
+
+                <div class="focus-card" style="margin-top: 1.5rem">
+                    <h3>Sistemas de Backup Seleccionados</h3>
+                    <div
+                        style="
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 2rem;
+                            margin-top: 1rem;
+                        "
+                    >
+                        <div>
+                            <h4 style="color: var(--primary)">Copia Local</h4>
+                            <ul>
+                                <li>
+                                    <strong>Hardware:</strong> Disco Externo
+                                    Desktop 10-12TB.
+                                </li>
+                                <li>
+                                    <strong>Software:</strong> Time Machine
+                                    (macOS) o Windows Backup.
+                                </li>
+                                <li>
+                                    <strong>Función:</strong> Recuperación
+                                    inmediata de archivos borrados por error.
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary)">
+                                Copia en la Nube
+                            </h4>
+                            <ul>
+                                <li><strong>Servicio:</strong> IDrive</li>
+                                <li>
+                                    <strong>Capacidad:</strong> 5TB de
+                                    almacenamiento dedicado.
+                                </li>
+                                <li>
+                                    <strong>Seguridad:</strong> Cifrado de
+                                    extremo a extremo (E2EE).
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div
+                        class="highlight-box"
+                        style="margin-top: 1.5rem; text-align: center"
+                    >
+                        <p>
+                            <strong>Precio Medio Estimado:</strong> ~200€
+                            (Hardware único) + 15-20€/mes (Suscripción Cloud).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="valuation">
+                <h2 style="text-align: center; margin-bottom: 2rem">
+                    Justificación de las Decisiones
+                </h2>
+                <div class="grid cards-3">
+                    <div
+                        style="
+                            padding: 1rem;
+                            background: rgba(255, 255, 255, 0.05);
+                            border-radius: 8px;
+                            border-left: 4px solid var(--accent);
+                        "
+                    >
+                        <h4 style="color: var(--accent)">Regla 3-2-1</h4>
+                        <p style="font-size: 0.9rem">
+                            Se cumplen estrictamente las 3 copias en 2 soportes
+                            diferentes con 1 copia fuera de la ubicación física.
+                        </p>
+                    </div>
+                    <div
+                        style="
+                            padding: 1rem;
+                            background: rgba(255, 255, 255, 0.05);
+                            border-radius: 8px;
+                            border-left: 4px solid var(--accent);
+                        "
+                    >
+                        <h4 style="color: var(--accent)">
+                            Protección Anti-Ransomware
+                        </h4>
+                        <p style="font-size: 0.9rem">
+                            El uso de sistemas inmutables en la nube impide que
+                            un virus pueda borrar los backups históricos.
+                        </p>
+                    </div>
+                    <div
+                        style="
+                            padding: 1rem;
+                            background: rgba(255, 255, 255, 0.05);
+                            border-radius: 8px;
+                            border-left: 4px solid var(--accent);
+                        "
+                    >
+                        <h4 style="color: var(--accent)">Escalabilidad</h4>
+                        <p style="font-size: 0.9rem">
+                            Tanto el NAS como los servicios Cloud permiten
+                            aumentar el almacenamiento sin cambiar de
+                            infraestructura.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <footer class="footer">
+                <div class="footer-cta">
+                    <a href="practica5.html" class="btn-secondary"
+                        >Anterior Práctica</a
+                    >
+                    <a href="index.html" class="btn-primary"
+                        >Siguiente Práctica</a
+                    >
+                </div>
+            </footer>
+        </main>
+    </body>
+</html>

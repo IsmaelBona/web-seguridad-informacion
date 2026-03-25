@@ -8,7 +8,10 @@
         <link rel="stylesheet" href="assets/styles_practica5.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <nav class="navbar">
@@ -20,23 +23,46 @@
                 <li><a href="practica3.html">Práctica 3</a></li>
                 <li><a href="practica4.html">Práctica 4</a></li>
                 <li><a href="practica5.html" class="active">Práctica 5</a></li>
+                <li><a href="practica6.html">Práctica 6</a></li>
             </ul>
         </nav>
 
         <main style="padding: 4rem 5%; max-width: 1000px; margin: 0 auto">
             <header class="section-header">
-                <p style="color: var(--accent, #3b82f6); font-weight: 600; margin-bottom: 0.5rem;">Adquisición y Procesamiento de Datos</p>
+                <p
+                    style="
+                        color: var(--accent, #3b82f6);
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                    "
+                >
+                    Adquisición y Procesamiento de Datos
+                </p>
                 <h1>Práctica 5: Web Scraping e Integración LLM</h1>
             </header>
 
             <section class="step-card">
                 <h2>1. Objetivo</h2>
-                <p>El propósito de esta práctica es automatizar la extracción masiva de datos no estructurados desde dominios web (diario deportivo). La arquitectura desarrollada permite recolectar texto estructurado, hipervínculos, metadatos de contacto, imágenes y archivos. Esta ingesta de datos es el paso fundamental para la creación de <em>datasets</em> orientados al entrenamiento de modelos de Inteligencia Artificial.</p>
+                <p>
+                    El propósito de esta práctica es automatizar la extracción
+                    masiva de datos no estructurados desde dominios web (diario
+                    deportivo). La arquitectura desarrollada permite recolectar
+                    texto estructurado, hipervínculos, metadatos de contacto,
+                    imágenes y archivos. Esta ingesta de datos es el paso
+                    fundamental para la creación de <em>datasets</em> orientados
+                    al entrenamiento de modelos de Inteligencia Artificial.
+                </p>
             </section>
 
             <section class="step-card">
                 <h2>2. Script Python: Extractor Multimodal</h2>
-                <p>El script utiliza <code>requests</code> y <code>BeautifulSoup</code> para recorrer el DOM, descargando los assets locales y estructurando el texto. La información se inyecta como contexto en un modelo <strong>GPT-4o-mini</strong> vía API para su sintetización.</p>
+                <p>
+                    El script utiliza <code>requests</code> y
+                    <code>BeautifulSoup</code> para recorrer el DOM, descargando
+                    los assets locales y estructurando el texto. La información
+                    se inyecta como contexto en un modelo
+                    <strong>GPT-4o-mini</strong> vía API para su sintetización.
+                </p>
                 <div class="code-container">
                     <pre>
 <span class="keyword">import</span> os
@@ -58,7 +84,7 @@ headers = {<span class="string">"User-Agent"</span>: <span class="string">"Mozil
     noticias_acumuladas = []
     enlaces_totales = <span class="func">set</span>()
     contactos = <span class="func">set</span>()
-    
+
     <span class="keyword">try</span>:
         response = requests.get(URL, headers=headers, timeout=10)
         response.raise_for_status()
@@ -73,7 +99,7 @@ headers = {<span class="string">"User-Agent"</span>: <span class="string">"Mozil
             f.write(<span class="string">"\n"</span>.join(enlaces_totales))
 
         links = soup.find_all(<span class="string">"a"</span>, class_=<span class="string">"ue-c-cover-content__link"</span>)
-        
+
         <span class="keyword">for</span> link <span class="keyword">in</span> links[:20]:
             href = link.get(<span class="string">"href"</span>)
             <span class="keyword">if not</span> href: <span class="keyword">continue</span>
@@ -83,7 +109,7 @@ headers = {<span class="string">"User-Agent"</span>: <span class="string">"Mozil
                 r = requests.get(href, headers=headers, timeout=8)
                 soup2 = BeautifulSoup(r.text, <span class="string">"html.parser"</span>)
                 h1 = soup2.find(<span class="string">"h1"</span>, class_=<span class="string">"ue-c-article__headline"</span>)
-                
+
                 <span class="keyword">if</span> h1:
                     titular = h1.text.strip()
                     noticias_acumuladas.append(f<span class="string">"TITULAR: {titular}\n---"</span>)
@@ -113,27 +139,54 @@ response = client.chat.completions.create(
 
             <section class="step-card">
                 <h2>3. Análisis Teórico y Arquitectura OSINT</h2>
-                <h3 class="theory-title">a. ¿Qué se puede conseguir con este tipo de programas?</h3>
-                <p>La capacidad de estructurar la web permite habilitar <em>pipelines</em> de datos a gran escala. A nivel de Data Science, es el mecanismo principal para generar corpus de texto orientados al fine-tuning de modelos generativos.</p>
+                <h3 class="theory-title">
+                    a. ¿Qué se puede conseguir con este tipo de programas?
+                </h3>
+                <p>
+                    La capacidad de estructurar la web permite habilitar
+                    <em>pipelines</em> de datos a gran escala. A nivel de Data
+                    Science, es el mecanismo principal para generar corpus de
+                    texto orientados al fine-tuning de modelos generativos.
+                </p>
 
-                <h3 class="theory-title">b. OSINT: Recolección masiva sobre entidades</h3>
-                <p>Permite indexar repositorios de código corporativo en busca de credenciales expuestas y extraer correos electrónicos enterrados en metadatos o archivos PDF olvidados en subdominios no asegurados.</p>
+                <h3 class="theory-title">
+                    b. OSINT: Recolección masiva sobre entidades
+                </h3>
+                <p>
+                    Permite indexar repositorios de código corporativo en busca
+                    de credenciales expuestas y extraer correos electrónicos
+                    enterrados en metadatos o archivos PDF olvidados en
+                    subdominios no asegurados.
+                </p>
 
-                <h3 class="theory-title">c. Limitaciones y problemática en redes sociales</h3>
-                <p>Su viabilidad técnica se desploma ante ecosistemas cerrados. Los obstáculos incluyen el renderizado dinámico mediante JavaScript, bloqueos algorítmicos mediante heurística de IP y sistemas CAPTCHA.</p>
+                <h3 class="theory-title">
+                    c. Limitaciones y problemática en redes sociales
+                </h3>
+                <p>
+                    Su viabilidad técnica se desploma ante ecosistemas cerrados.
+                    Los obstáculos incluyen el renderizado dinámico mediante
+                    JavaScript, bloqueos algorítmicos mediante heurística de IP
+                    y sistemas CAPTCHA.
+                </p>
             </section>
 
             <section class="valuation">
                 <h2>Valoración de la práctica</h2>
                 <p>
-                    <strong>Dificultad: Media-Baja.</strong> El verdadero reto para los ingenieros de inteligencia artificial consiste en programar rutinas de limpieza (Data Cleaning) robustas que soporten las alteraciones constantes en el código fuente de los objetivos web.
+                    <strong>Dificultad: Media-Baja.</strong> El verdadero reto
+                    para los ingenieros de inteligencia artificial consiste en
+                    programar rutinas de limpieza (Data Cleaning) robustas que
+                    soporten las alteraciones constantes en el código fuente de
+                    los objetivos web.
                 </p>
             </section>
 
             <footer class="footer">
                 <div class="footer-cta">
-                    <a href="practica4.html" class="btn-secondary">Anterior: Práctica 4</a>
-                    <a href="index.html" class="btn-primary">Finalizar Prácticas</a>
+                    <a href="practica4.html" class="btn-secondary"
+                        >Anterior: Práctica 4</a
+                    >
+                    <a href="practica6.html" class="btn-primary">Práctica 6</a>
                 </div>
             </footer>
         </main>
