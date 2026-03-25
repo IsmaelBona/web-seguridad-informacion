@@ -1,0 +1,52 @@
+/* estilos especificos para practica 5 (scraping) */
+
+.code-container {
+    background-color: #1e1e1e; /* fondo tipo visual studio code */
+    border-radius: 8px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.code-container pre {
+    margin: 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #d4d4d4;
+}
+
+/* syntax highlighting manual simulado */
+.keyword {
+    color: #569cd6; /* azul vs code */
+    font-weight: bold;
+}
+
+.string {
+    color: #ce9178; /* naranja/marron vs code */
+}
+
+.func {
+    color: #dcdcaa; /* amarillo funcion vs code */
+}
+
+.theory-title {
+    margin-top: 1.5rem;
+    color: var(--accent, #3b82f6);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.valuation {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+}
+
+.valuation h2 {
+    color: #f3f4f6;
+    margin-bottom: 1rem;
+}
